@@ -1,17 +1,15 @@
 pages:
-  image: node:20-alpine
-  cache:
-    paths:
-      - node_modules/
+  image: python:3.11-alpine
   before_script:
+    - apk add --no-cache nodejs npm
     - npm install -g reveal-md
   script:
-    - reveal-md index.md --static site
-    - reveal-md "Part 1 - Introduction & Setup.md" --static site/part1
-    - reveal-md "Part 2 - Basic Commands & First Repository.md" --static site/part2
-    - reveal-md "Part 3 - Remote Repositories & Collaboration.md" --static site/part3
+    - reveal-md index.md --static public
+    - reveal-md "Part 1 - Introduction & Setup.md" --static public/part1
+    - reveal-md "Part 2 - Basic Commands & First Repository.md" --static public/part2
+    - reveal-md "Part 3 - Remote Repositories & Collaboration.md" --static public/part3
   artifacts:
     paths:
-      - site
+      - public
   only:
     - main
