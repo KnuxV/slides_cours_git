@@ -1,6 +1,6 @@
 ---
 words:
-  2025-11-06: 2520
+  2025-11-06: 2477
 title: Part 2 - Basic Commands & First Repository
 theme: simple
 highlightTheme: github
@@ -47,9 +47,10 @@ Your Computer          Internet          GitLab Server
 ### Authentication: Two Options
 
 #### **Option 1: HTTPS + Personal Access Token**  
-#"## **Option 2: SSH Keys** 
 
-**Today = Token only, but feel free to try ssh**
+### **Option 2: SSH Keys** 
+
+
 
 ---
 
@@ -161,20 +162,6 @@ Result: Conflict when pushing!
 
 **Empty repo = Clean push** 
 
----
-
-### Step 2: Get the Repository URL
-
-**On your new GitLab project page:**
-
-You'll see:
-```
-Push an existing folder
-git remote add origin url_blabla
-git push -u origin main
-```
-
-**Copy that URL** 
 
 ---
 
@@ -194,7 +181,7 @@ git@gitlab.unistra.fr:username/repo.git
 
 ---
 
-### Step 3: Link Local to Remote
+### Step 2: Link Local to Remote
 
 **In your terminal, in your project folder:**
 
@@ -252,7 +239,7 @@ origin  https://gitlab.unistra.fr/username/my-first-website.git (push)
 
 ---
 
-### Step 4: Push Your Code!
+### Step 3: Push Your Code!
 
 ```bash
 git push -u origin main
