@@ -1,6 +1,9 @@
 ---
 words:
-  2025-11-06: 828
+  2025-11-06: 823
+title: Part 1 - Introduction & Setup
+theme: simple
+highlightTheme: github
 ---
 # Version Control with Git
 
@@ -23,14 +26,11 @@ words:
 
 ## Real Developer problems
 
-> *"I made changes yesterday and everything worked...  
-> Now it's broken and I don't remember what I changed!"*
+ *"I made changes yesterday and everything worked... Now it's broken and I don't remember what I changed!"*
 
-> *"My colleague edited the same file I was working on.  
-> Now whose changes do we keep?"*
+ *"My colleague edited the same file I was working on. Now whose changes do we keep?"*
 
-> *"I want to try something experimental  
-> but I'm afraid to break my working code..."*
+*"I want to try something experimental but I'm afraid to break my working code..."*
 
 ---
 
@@ -153,7 +153,7 @@ See exactly who changed what and why
 
 ---
 
-## Setup Time! 🛠️
+## Setup Time! 
 
 **Let's get Git on your machine**
 
@@ -248,7 +248,7 @@ git config user.email
 
 ---
 
-## Optional: Make Git Pretty 🎨
+## Optional: Make Git Pretty 
 
 ```bash
 # Colorful output

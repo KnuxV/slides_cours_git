@@ -1,6 +1,9 @@
 ---
 words:
-  2025-11-06: 2399
+  2025-11-06: 2271
+title: Part 2 - Basic Commands & First Repository
+theme: simple
+highlightTheme: github
 ---
 # Part 2: Your First Git Repository
 
@@ -101,9 +104,7 @@ dir /a    # Windows
 
 ---
 
-## 🎨 Create Your First File
-
-**Create a file called `index.html`:**
+## Create Your First File
 
 ```bash
 # Option 1: Using terminal
@@ -127,7 +128,6 @@ touch index.html
 ```
 
 ---
-
 ## Git Status: Your Best Friend
 
 ```bash
@@ -160,8 +160,6 @@ Untracked files:
 - Git sees the file
 - But Git is NOT watching it for changes
 - We need to tell Git to track it!
-
-**Rule:** Always run `git status` when you're confused!
 
 ---
 
@@ -197,7 +195,7 @@ Changes to be committed:
 
 **Notice:**
 - "Changes to be committed" (green)
-- This is the staging area!
+- This is the staging area
 
 ---
 
@@ -217,8 +215,6 @@ git add *.html
 git add -A
 ```
 
-**Today:** We'll be explicit with file names for clarity
-
 ---
 
 ## Git Commit: Save the Snapshot
@@ -227,12 +223,7 @@ git add -A
 git commit -m "Initial commit: Add index.html"
 ```
 
-**Anatomy of the command:**
-- `git commit` = Save a snapshot
-- `-m` = Message flag
-- `"..."` = Your commit message
-
-**Output:**
+Output:
 ```
 [main (root-commit) a1b2c3d] Initial commit: Add index.html
  1 file changed, 9 insertions(+)
@@ -250,7 +241,7 @@ git commit -m "Initial commit: Add index.html"
 - Attached your name, email, and timestamp
 - Stored it permanently in `.git/` folder
 
-**This is now part of your project's history forever!**
+**This is now part of your project's history**
 
 ---
 
@@ -268,18 +259,20 @@ git commit -m "Update contact form validation"
 git commit -m "stuff"
 git commit -m "fixed it"
 git commit -m "asdfasdf"
-git commit -m "final version" (narrator: it wasn't)
+git commit -m "final version" (it's never the last one...)
 ```
 
 ---
 
-## Commit Message Best Practices
+## Best Practices
 
 **Rules of thumb:**
 1. **Start with a verb** (Add, Fix, Update, Remove)
 2. **Be specific** (what changed?)
 3. **Keep it under 50 characters** for the first line
 4. **Use present tense** ("Add feature" not "Added feature")
+
+---
 
 **Think:** "If applied, this commit will ___"
 ```
@@ -303,13 +296,13 @@ nothing to commit, working tree clean
 ```
 
 **Translation:**
-- ✅ No unsaved changes
-- ✅ Everything is committed
-- ✅ Working directory is clean
+- No unsaved changes
+- Everything is committed
+- Working directory is clean
 
 ---
 
-## Let's Make Another Change! 
+## Let's Make Another Change
 
 **Add a paragraph to `index.html`:**
 
@@ -326,7 +319,6 @@ nothing to commit, working tree clean
 </html>
 ```
 
-**Save the file!**
 
 ---
 
@@ -347,7 +339,7 @@ Changes not staged for commit:
 no changes added to commit
 ```
 
-**Git detected the change!** 🎯
+**Git detected the change!**
 
 ---
 
@@ -480,7 +472,7 @@ git log --oneline
 # 1234567 Initial commit: Add index.html
 ```
 
-**Much easier to read!** 
+**Much easier to read** 
 
 ---
 
@@ -500,7 +492,6 @@ git log --stat
 git log -p
 ```
 
-**Try them out!**
 
 ---
 
@@ -526,7 +517,6 @@ git commit -m "Description of changes"
 git log --oneline
 ```
 
-**This is the loop you'll repeat constantly!**
 
 ---
 
@@ -543,7 +533,7 @@ git commit -m "Your message"
 
 **⚠️ Warning:** `-am` only works for **modified** files, not new files!
 
-**For new files, you must `git add` them first!**
+**For new files, you must `git add` them first**
 
 ---
 
@@ -626,8 +616,6 @@ c5d6e7f Add footer
 b4c5d6e Add introductory paragraph
 a3b4c5d Initial commit: Add index.html
 ```
-
-**5+ commits! You're a Git user now!** 🎉
 
 ---
 
@@ -730,21 +718,6 @@ git add .gitignore
 git commit -m "Add gitignore file"
 ```
 
-**Files matching these patterns will be ignored!**
-
----
-
-## Checking What's Ignored
-
-```bash
-# See all ignored files
-git status --ignored
-
-# Check if a file would be ignored
-git check-ignore filename.log
-```
-
-**Pro tip:** GitHub has templates for different languages at [gitignore.io](https://gitignore.io)
 
 ---
 
@@ -794,21 +767,21 @@ Git Status shows you where you are! ←
 
 ---
 
-## Common Mistakes & Fixes
+### Common Mistakes & Fixes
 
-### Forgot to add before commit:
+##### Forgot to add before commit:
 ```bash
 # Just add and commit again
 git add forgotten-file.html
 git commit -m "Add forgotten file"
 ```
 
-### Typo in commit message:
+##### Typo in commit message:
 ```bash
 git commit --amend -m "Corrected message"
 ```
 
-### Want to undo last commit (keep changes):
+##### Want to undo last commit (keep changes):
 ```bash
 git reset --soft HEAD~1
 ```
@@ -933,7 +906,7 @@ git diff a1b2c3d..b2c3d4e
 
 ---
 
-## Your Local Git Workflow 🎯
+## Your Local Git Workflow 
 
 ```bash
 # The loop you'll repeat:
@@ -945,4 +918,3 @@ git commit -m "..."  # Save it
 git log --oneline    # Check history
 ```
 
-**Master this loop = Master 80% of Git!**

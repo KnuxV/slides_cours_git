@@ -1,6 +1,9 @@
 ---
 words:
   2025-11-06: 2578
+title: Part 2 - Basic Commands & First Repository
+theme: simple
+highlightTheme: github
 ---
 
 ### Remote Repositories & Collaboration
