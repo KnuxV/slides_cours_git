@@ -1,0 +1,30 @@
+name: Deploy slides
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g reveal-md
+      - run: |
+          mkdir -p public
+          reveal-md index.md --static public
+          reveal-md "Part 1 - Introduction & Setup.md" --static public/part1
+          reveal-md "Part 2 - Basic Commands & First Repository.md" --static public/part2
+          reveal-md "Part 3 - Remote Repositories & Collaboration.md" --static public/part3
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: public
+      - uses: actions/deploy-pages@v2
