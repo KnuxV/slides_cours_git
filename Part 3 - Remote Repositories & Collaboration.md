@@ -1,6 +1,6 @@
 ---
 words:
-  2025-11-06: 2578
+  2025-11-06: 2520
 title: Part 2 - Basic Commands & First Repository
 theme: simple
 highlightTheme: github
@@ -12,16 +12,18 @@ highlightTheme: github
 
 ---
 
-## Remote Repositories Explained
+### Remote Repositories Explained
 
 **Local Repository** = On your computer
-**Remote Repository** = On a server (for ex. Strasbourg University GitLab)
+**Remote Repository** = On a server
 
 ```
 Your Computer          Internet          GitLab Server
 [Local Repo]    ←→    [Network]    ←→   [Remote Repo]
    git push →                              ← git pull
 ```
+
+---
 
 **Why remote?**
 - Backup your code
@@ -30,7 +32,7 @@ Your Computer          Internet          GitLab Server
 
 ---
 
-## University GitLab Setup
+### University GitLab Setup
 
 **URL:** `https://gitlab.unistra.fr`
 
@@ -38,42 +40,34 @@ Your Computer          Internet          GitLab Server
 - Username: Your ernest username
 - Password: Your ernest password
 
-**Let's all log in now!**
+**Let's log in now**
 
 ---
 
-## Authentication: Two Options
+### Authentication: Two Options
 
-### **Option 1: HTTPS + Personal Access Token**  
-- Easier for the first time
-- Works everywhere
-- We'll set it up together
-
-### **Option 2: SSH Keys** 
-- More secure
-- No passwords
-- Takes longer to setup
-- See documentation later
+#### **Option 1: HTTPS + Personal Access Token**  
+#"## **Option 2: SSH Keys** 
 
 **Today = Token only, but feel free to try ssh**
 
 ---
 
-## Creating a Personal Access Token
+### Creating a Token
 
 **Follow along on GitLab:**
 
 1. Click your profile picture (top right)
-2. **Preferences** → **Access Tokens** --> Add new token
-3. Token name: `Salle 404` or else
+2. Preferences → Access Tokens --> Add new token
+3. Token name: `Salle 404` 
 4. Expiration: Choose a date (e.g., end of semester)
-5. Scopes: ✅ `read_repository` ✅ `write_repository`
-6. Click **Create personal access token**
-7. **COPY THE TOKEN NOW** (you won't see it again!)
+5. Scopes: `read_repository` `write_repository`
+6. Click Create personal access token
+7. COPY THE TOKEN NOW (you won't see it again!)
 
 ---
 
-## Save Your Token! 
+### Save Your Token
 
 **Important:**
 - Copy token to a text file (temporarily)
@@ -83,9 +77,7 @@ Your Computer          Internet          GitLab Server
 
 ---
 
-## Credential Caching (Make Life Easier)
-
-**So you don't type token every time:**
+### Credential Caching
 
 ```bash
 git config --global credential.helper store
@@ -102,7 +94,7 @@ git config --global credential.helper 'cache --timeout=28800'
 
 ---
 
-## SSH Keys Reference (For Later)
+### SSH Keys 
 
 **If you want to set up SSH:**
 
@@ -122,11 +114,11 @@ cat ~/.ssh/id_ed25519.pub
 
 ---
 
-# Part 1: Push Existing Local Repo
+## Part 1: Push Existing Local Repo
 
 ---
 
-## The Scenario
+### The Scenario
 
 **You have:**
 - ✅ Local Git repo on your computer
@@ -138,24 +130,24 @@ cat ~/.ssh/id_ed25519.pub
 - Make it accessible online
 - Have a backup
 
-**Let's do it!**
+
 
 ---
 
-## Step 1: Create Empty Repo on GitLab
+### Step 1: Create Empty Repo on GitLab
 
 **On `gitlab.unistra.fr`:**
 
 1. Click **New Project** (or **+** button)
 2. **Create blank project**
 3. Project name: `my-first-website`
-4. Visibility: **Private** (or Public if you want)
+4. Visibility: **Public** (or Private if you want)
 5. **UNCHECK** "Initialize repository with a README"
 6. Click **Create project**
 
 ---
 
-## Why Uncheck README?
+### Why Uncheck README?
 
 **We already have commits locally!**
 
@@ -164,29 +156,29 @@ If GitLab creates README:
   GitLab has: [README commit]
   You have:   [Your commits]
   
-Result: Conflict when pushing! ❌
+Result: Conflict when pushing! 
 ```
 
-**Empty repo = Clean push** ✅
+**Empty repo = Clean push** 
 
 ---
 
-## Step 2: Get the Repository URL
+### Step 2: Get the Repository URL
 
 **On your new GitLab project page:**
 
 You'll see:
 ```
 Push an existing folder
-git remote add origin BLABLABLA
+git remote add origin url_blabla
 git push -u origin main
 ```
 
-**Copy that URL!** 📋
+**Copy that URL** 
 
 ---
 
-## Understanding Remote URLs
+### Understanding Remote URLs
 
 **Two formats:**
 
@@ -202,7 +194,7 @@ git@gitlab.unistra.fr:username/repo.git
 
 ---
 
-## Step 3: Link Local to Remote
+### Step 3: Link Local to Remote
 
 **In your terminal, in your project folder:**
 
@@ -217,7 +209,7 @@ git remote add origin https://gitlab.unistra.fr/YOUR_USERNAME/my-first-website.g
 
 ---
 
-## What is "origin"?
+### What is "origin"?
 
 **origin** = Default name for your main remote repository
 
@@ -231,12 +223,20 @@ You can type:
   origin
 ```
 
+---
+
 **You can have multiple remotes, but origin is the standard name**
-We could push the code to two remotes for example. Maybe you want to save it for yourself and for your team for example.
+```git
+git remote add github github_url
+git remote add gitlab gitlab_url
+
+# now we could do something like:
+git push github main # push the code to github 
+```
 
 ---
 
-## Verify Remote Added
+### Verify Remote Added
 
 ```bash
 git remote -v
@@ -252,7 +252,7 @@ origin  https://gitlab.unistra.fr/username/my-first-website.git (push)
 
 ---
 
-## Step 4: Push Your Code!
+### Step 4: Push Your Code!
 
 ```bash
 git push -u origin main
@@ -268,7 +268,7 @@ git push -u origin main
 
 ---
 
-## Authentication Time! 
+### Authentication Time
 
 **When you push, GitLab asks:**
 
@@ -281,7 +281,7 @@ Password for 'https://your_username@gitlab.unistra.fr':
 
 ---
 
-## Reults
+### Results
 
 **Output:**
 ```
@@ -299,7 +299,7 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 ---
 
-## Common Issues & Fixes
+### Common Issues & Fixes
 
 **"remote: HTTP Basic: Access denied"**
 - Wrong token or username
@@ -311,13 +311,13 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 ---
 
-# Part 2: Clone Your Own Empty Repo
+## Part 2: Clone Your Own Empty Repo
 
-## Start fresh from GitLab
+### Start fresh from GitLab
 
 ---
 
-## Different Workflow
+### Different Workflow
 
 **Before:** Local → Remote (push existing work)
 
@@ -334,7 +334,7 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 ---
 
-## Step 1: Create New Empty Repo
+### Step 1: Create New Empty Repo
 
 **On GitLab:**
 
@@ -346,7 +346,7 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 ---
 
-## Step 2: Get Clone URL
+### Step 2: Get Clone URL
 
 **On your new project page:**
 
@@ -359,7 +359,7 @@ https://gitlab.unistra.fr/username/git-practice.git
 
 ---
 
-## Step 3: Clone to Your Computer
+### Step 3: Clone to Your Computer
 
 **In terminal (NOT in existing repo):**
 
@@ -377,7 +377,7 @@ cd git-practice
 
 ---
 
-## What Just Happened?
+### What Just Happened?
 
 ```bash
 git clone <url>
@@ -394,7 +394,7 @@ git clone <url>
 
 ---
 
-## Verify the Clone
+### Verify the Clone
 
 ```bash
 # Check remote (should already be set!)
@@ -414,7 +414,7 @@ ls -la
 
 ---
 
-## Step 4: Add Some Files
+### Step 4: Add Some Files
 
 **Create a simple webpage:**
 
@@ -430,7 +430,7 @@ print(random.random())
 
 ---
 
-## Step 5: Commit Locally
+### Step 5: Commit Locally
 
 ```bash
 git status
@@ -442,7 +442,7 @@ git commit -m "Add random script"
 
 ---
 
-## Step 6: Push to GitLab
+### Step 6: Push to GitLab
 
 ```bash
 git push
@@ -454,7 +454,7 @@ git push
 
 ---
 
-## Pull Changes from GitLab
+### Pull Changes from GitLab
 
 **Let's edit on GitLab web interface:**
 
@@ -468,7 +468,7 @@ git push
 
 ---
 
-## Pull the Changes
+### Pull the Changes
 
 **In terminal:**
 
@@ -489,7 +489,7 @@ Fast-forward
 
 ---
 
-## Understanding Push & Pull
+### Understanding Push & Pull
 
 ```
        git push →
@@ -504,7 +504,7 @@ Pull = Get commits from GitLab
 
 ---
 
-## The Push/Pull Cycle
+### The Push/Pull Cycle
 
 ```bash
 # Start your work
@@ -541,13 +541,13 @@ git push
 
 ---
 
-# Part 3: Clone Someone Else's Repo
+## Part 3: Clone Someone Else's Repo
 
-## Exploring public code
+### Exploring public code
 
 ---
 
-## Why Clone Others' Code?
+### Why Clone Others' Code?
 
 **Reasons:**
 - Learn from others
@@ -559,7 +559,7 @@ git push
 
 ---
 
-## Permissions Matter
+### Permissions Matter
 
 **When you clone someone else's repo:**
 
@@ -576,7 +576,7 @@ git push
 
 ---
 
-## Let's Clone a Public Repo
+### Let's Clone a Public Repo
 
 
 ```
@@ -594,7 +594,7 @@ cd git-demo
 
 ---
 
-## Explore the Cloned Repo
+### Explore the Cloned Repo
 
 ```bash
 # View the files
@@ -614,7 +614,7 @@ cat README.md
 
 ---
 
-## Try to Push (It Will Fail!)
+### Try to Push (It Will Fail!)
 
 ```bash
 # Make a change
@@ -637,7 +637,7 @@ or something like that
 
 ---
 
-## What If You Want to Contribute?
+### What If You Want to Contribute?
 
 **That's where FORKING comes in!** →
 
@@ -645,13 +645,13 @@ or something like that
 
 ---
 
-# Part 4: Fork Workflow
+## Part 4: Fork Workflow
 
-## Make your own copy to modify
+### Make your own copy to modify
 
 ---
 
-## What is Forking?
+### What is Forking?
 
 **Fork = Copy someone's repo to YOUR account**
 
@@ -668,7 +668,7 @@ Their GitLab Account        Your GitLab Account
 
 ---
 
-## Fork vs Clone
+### Fork vs Clone
 
 **Clone:**
 - Downloads to your computer
@@ -683,7 +683,7 @@ Their GitLab Account        Your GitLab Account
 
 ---
 
-## When to Fork?
+### When to Fork?
 
 **Use forking when:**
 - 🐛 You want to fix a bug in someone's project
@@ -695,7 +695,7 @@ Their GitLab Account        Your GitLab Account
 
 ---
 
-## Step 1: Fork a Repository
+### Step 1: Fork a Repository
 
 **On the demo repo page:**
 
@@ -709,7 +709,7 @@ Their GitLab Account        Your GitLab Account
 
 ---
 
-## Step 2: Clone YOUR Fork
+### Step 2: Clone YOUR Fork
 
 **Your fork has a different URL:**
 
@@ -730,7 +730,7 @@ cd collaboration-fork
 
 ---
 
-## Step 3: Make Changes
+### Step 3: Make Changes
 
 ```bash
 # Add your name in contributions.md
@@ -745,7 +745,7 @@ git commit -m "Add my contribution"
 
 ---
 
-## Step 4: Push to YOUR Fork
+### Step 4: Push to YOUR Fork
 
 ```bash
 git push
@@ -757,7 +757,7 @@ git push
 
 ---
 
-## Understanding Fork Relationships
+### Understanding Fork Relationships
 
 ```
 [Original Repo]
@@ -771,7 +771,7 @@ git push
 
 ---
 
-## Merge Requests (Pull Requests)
+### Merge Requests (Pull Requests)
 
 **Want to contribute back to original?**
 
@@ -785,7 +785,7 @@ git push
 
 ---
 
-## Creating a Merge Request
+### Creating a Merge Request
 
 **On your fork's GitLab page:**
 
@@ -800,7 +800,7 @@ git push
 
 ---
 
-## Practice: Fork & Contribute (8 min)
+### Practice: Fork & Contribute (8 min)
 
 **Your turn:**
 
@@ -812,7 +812,7 @@ git push
 
 ---
 
-## Fork Workflow Summary
+### Fork Workflow Summary
 
 ```
 1. Fork (on GitLab) → Your copy created
@@ -828,13 +828,13 @@ git push
 
 ---
 
-# Part 5: Merge, Rebase & Conflicts
+## Part 5: Merge, Rebase & Conflicts
 
-## When collaboration gets messy
+### When collaboration gets messy
 
 ---
 
-## Why Conflicts Happen
+### Why Conflicts Happen
 
 **Two people edit the same line:**
 
@@ -850,7 +850,7 @@ Git: "Wait, which one?!"
 
 ---
 
-## Conflict Scenario Setup
+### Conflict Scenario Setup
 
 **Let's create a conflict intentionally:**
 
@@ -862,7 +862,7 @@ Git: "Wait, which one?!"
 
 ---
 
-## Simulate Conflict
+### Simulate Conflict
 
 **Now I'll push a change to the collaboration-fork:**
 
@@ -878,7 +878,7 @@ git pull
 
 ---
 
-## Anatomy of a Conflict
+### Anatomy of a Conflict
 
 **Git adds markers to your file:**
 
@@ -897,7 +897,7 @@ git pull
 
 ---
 
-## Conflict Markers Explained
+### Conflict Markers Explained
 
 ```html
 <<<<<<< HEAD (your current commit)
@@ -915,7 +915,7 @@ git pull
 
 ---
 
-## Resolving a Conflict
+### Resolving a Conflict
 
 **Step 1: Open the conflicted file**
 
@@ -935,7 +935,7 @@ git pull
 
 ---
 
-## Step 3: Mark as Resolved
+### Step 3: Mark as Resolved
 
 ```bash
 # After editing the file
@@ -953,7 +953,7 @@ git push
 ---
 
 
-## Checking for Conflicts
+### Checking for Conflicts
 
 ```bash
 # Before you commit
@@ -968,7 +968,7 @@ both modified: index.html
 
 ---
 
-## Checking What Changed During Pull
+### Checking What Changed During Pull
 
 ```bash
 # Before pulling
@@ -982,7 +982,7 @@ git diff main origin/main
 
 ---
 
-## Commands Summary
+### Commands Summary
 
 ```bash
 git remote add origin <url>  # Link local to remote
@@ -996,7 +996,7 @@ git rebase                   # Replay commits
 
 ---
 
-## Workflow Checklist
+### Workflow Checklist
 
 **Daily workflow:**
 ```
