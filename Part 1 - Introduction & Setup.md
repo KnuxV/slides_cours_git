@@ -1,6 +1,6 @@
 ---
 words:
-  2025-11-06: 823
+  2025-11-06: 815
 title: Part 1 - Introduction & Setup
 theme: simple
 highlightTheme: github
@@ -26,11 +26,11 @@ highlightTheme: github
 
 ## Real Developer problems
 
- *"I made changes yesterday and everything worked... Now it's broken and I don't remember what I changed!"*
+ "I made changes yesterday and everything worked... Now it's broken and I don't remember what I changed!"
 
- *"My colleague edited the same file I was working on. Now whose changes do we keep?"*
+ "My colleague edited the same file I was working on. Now whose changes do we keep?"
 
-*"I want to try something experimental but I'm afraid to break my working code..."*
+"I want to try something experimental but I'm afraid to break my working code..."
 
 ---
 
@@ -88,8 +88,8 @@ Companies using Git:
 
 ---
 
-## Analogy Time
-
+## Analogy 
+<!-- .slide: style="text-align: left;" -->
 **Git** ~ Microsoft Word
 - The program that does the work
 - Runs on your computer
@@ -108,20 +108,26 @@ Companies using Git:
 Both are Git hosting platforms, but:
 
 | Feature    | GitHub          | GitLab             |
-| ---------- | --------------- | ------------------ |
+|------------|-----------------|-------------------|
 | Owner      | Microsoft       | Independent        |
 | Popularity | #1 (100M users) | #2 (30M users)     |
 | CI/CD      | Actions         | Built-in pipelines |
-<split even>
 
-The university of Strasbourg self hosts its own Gitlab via gitlab.unistra.fr
+---
 
-As a student you have an account by default, use your regular username/password to connect
-</split>
+## University of Strasbourg GitLab
+
+The university self-hosts its own GitLab instance:
+
+**gitlab.unistra.fr**
+
+- You have an account by default as a student
+- Use your regular university username/password to connect
+
 ---
 
 ## What Git Tracks
-
+<!-- .slide: style="text-align: left;" -->
 **Files Git loves:**
 
 - Source code (`.py`, `.js`, `.html`, `.css`)
@@ -137,23 +143,23 @@ As a student you have an account by default, use your regular username/password 
 
 ---
 
-## Git's Superpowers
+## Git's abilities
 
-### 1. Time Travel 
+##### 1. Time Travel 
 Go back to any previous version
 
-### 2. Parallel Universes 
+##### 2. Parallel Universes 
 Work on features in isolation (branches)
 
-### 3. Collaboration 
+##### 3. Collaboration 
 Merge work from multiple people
 
-### 4. Audit Trail 
+##### 4. Audit Trail 
 See exactly who changed what and why
 
 ---
 
-## Setup Time! 
+## Setup Time 
 
 **Let's get Git on your machine**
 
@@ -161,9 +167,6 @@ Check if you already have it:
 ```bash
 git --version
 ```
-
-See a version number? **You're good!**  
-Don't see it? **Let's install...**
 
 ---
 
@@ -290,4 +293,4 @@ Before we dive in, know these terms:
 4. Push to GitHub/GitLab (git push)
 ```
 
-**We'll practice this A LOT today**
+
