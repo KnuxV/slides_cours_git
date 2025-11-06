@@ -1,10 +1,9 @@
 pages:
-  image: node:20-alpine
-  cache:
-    paths:
-      - node_modules/
+  tags:
+    - shell
   before_script:
-    - npm install -g reveal-md
+    - command -v node || (echo "Installing Node.js..." && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs)
+    - npm install -g reveal-md || true
   script:
     - reveal-md index.md --static public
     - reveal-md "Part 1 - Introduction & Setup.md" --static public/part1
