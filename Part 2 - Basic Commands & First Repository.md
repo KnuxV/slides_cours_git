@@ -1,23 +1,22 @@
 ---
 words:
-  2025-11-06: 2271
+  2025-11-06: 2247
 title: Part 2 - Basic Commands & First Repository
 theme: simple
 highlightTheme: github
 ---
-# Part 2: Your First Git Repository
+## Part 2: Your First Git Repository
 
-## Hands-On: Local Git Workflow
+### Hands-On: Local Git Workflow
 
 *Let's get our hands dirty with real Git commands*
 
 ---
 
-## Plan 
+### Plan 
 
 **We're going to build a simple website and track it with Git**
 
-By the end of this section, you'll:
 - Create your first Git repository
 - Make commits (save points)
 - View your history
@@ -28,9 +27,11 @@ By the end of this section, you'll:
 ---
 
 <code>
-Working Directory  →  Staging Area  →  Repository  
+Working Directory  →  
+Staging Area  →  
+Repository  
 
-(Modified) ->  (Staged) ->(Committed)
+(Modified) ->  (Staged) -> (Committed)
 
 </code>
 
@@ -90,11 +91,6 @@ pwd
 git init
 ```
 
-**What just happened?**
-- Git created a hidden `.git` folder
-- This folder contains ALL the Git magic
-- Your folder is now a Git repository!
-
 **Verify:**
 ```bash
 ls -la    # Linux/macOS
@@ -102,14 +98,19 @@ dir /a    # Windows
 # You should see: .git/
 ```
 
+**What just happened?**
+- Git created a hidden `.git` folder
+- This folder contains ALL the Git magic
+- Your folder is now a Git repository
+
 ---
 
 ## Create Your First File
 
 ```bash
 # Option 1: Using terminal
-touch index.html
-
+touch index.html # to create it 
+nano index.html # to modify it
 # Option 2: Just create it in your text editor
 ```
 
@@ -119,7 +120,7 @@ touch index.html
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My First Git Project</title>
+    <title>Git Project</title>
 </head>
 <body>
     <h1>Hello, Git!</h1>
@@ -339,7 +340,7 @@ Changes not staged for commit:
 no changes added to commit
 ```
 
-**Git detected the change!**
+**Git detected the change**
 
 ---
 
@@ -363,8 +364,7 @@ index a1b2c3d..e4f5g6h 100644
  </html>
 ```
 
-**Green lines (+) = Added**  
-**Red lines (-) = Removed**
+**Green lines (+) = Added** // **Red lines (-) = Removed**
 
 ---
 
@@ -378,9 +378,7 @@ index a1b2c3d..e4f5g6h 100644
 +<p>This is my first website tracked with Git!</p>
 ```
 
-**The + means this line was added!**
-
-**Pro tip:** `git diff` only shows UNSTAGED changes
+ `git diff` only shows UNSTAGED changes
 
 ---
 
@@ -400,26 +398,23 @@ git commit -m "Add introductory paragraph"
  1 file changed, 1 insertion(+)
 ```
 
-**You now have TWO commits!** 🎉
+**You now have TWO commits** 
 
 ---
 
-## Practice Round: Your Turn! 💪
-
-**Make these changes:**
-
+## Practice Round: 
 1. Add a footer to `index.html`:
    ```html
    <footer>
-       <p>&copy; 2025 My First Git Project</p>
+		<-- Whatever you want -->
    </footer>
    ```
 
 2. Check status
 3. View the diff
 4. Add and commit with message: "Add footer"
+5. Repeat with a second commit of your choice 
 
-**Take 3 minutes **
 
 ---
 
@@ -448,15 +443,24 @@ Date:   Thu Nov 6 10:15:00 2025 +0100
 
 ## Understanding Git Log
 
+<div style="display: flex; gap: 40px;">
+<div style="flex: 1; text-align: left;">
+
 Each commit shows:
 - **Commit hash** (unique ID)
 - **Author** (that's you)
 - **Date** (when you committed)
 - **Message** (what you wrote)
 
+</div>
+<div style="flex: 1; text-align: left;">
+
 **Navigate:** 
 - Press `Enter` to scroll
 - Press `q` to quit
+
+</div>
+</div>
 
 ---
 
@@ -495,7 +499,7 @@ git log -p
 
 ---
 
-## Workflow: The Complete Cycle
+## Workflow: The Cycle
 
 ```bash
 # 1. Check current status
@@ -531,15 +535,15 @@ git add .
 git commit -m "Your message"
 ```
 
-**⚠️ Warning:** `-am` only works for **modified** files, not new files!
+** Warning:** `-am` only works for **modified** files, not new files!
 
 **For new files, you must `git add` them first**
 
 ---
 
-## Let's Practice: Build a Real Page
+## Let's Practice: 
 
-**Create a proper website structure:**
+**Create a website structure:**
 
 ```
 my-first-website/
@@ -548,7 +552,6 @@ my-first-website/
 └── about.html     ← NEW
 ```
 
-**I'll give you 5 minutes:**
 1. Create `style.css` with basic styling
 2. Create `about.html` with an about page
 3. Make separate commits for each file
@@ -571,12 +574,6 @@ h1 {
 }
 ```
 
-**Create this file, then:**
-```bash
-git add style.css
-git commit -m "Add basic CSS styling"
-```
-
 ---
 
 ## Example: about.html
@@ -594,12 +591,6 @@ git commit -m "Add basic CSS styling"
 </html>
 ```
 
-**Then:**
-```bash
-git add about.html
-git commit -m "Add about page"
-```
-
 ---
 
 ## Check Your Progress
@@ -608,14 +599,6 @@ git commit -m "Add about page"
 git log --oneline
 ```
 
-**You should see something like:**
-```
-e7f8g9h Add about page
-d6e7f8g Add basic CSS styling  
-c5d6e7f Add footer
-b4c5d6e Add introductory paragraph
-a3b4c5d Initial commit: Add index.html
-```
 
 ---
 
@@ -633,7 +616,7 @@ Changes not staged:  ← Modified file, not added yet
 Changes to be committed: ← Staged, ready to commit
 ```
 
-**Each state requires different actions!**
+
 
 ---
 
@@ -653,28 +636,28 @@ Changes to be committed: ← Staged, ready to commit
 [Committed]
 ```
 
-**The cycle continues!**
+
 
 ---
 
 ## What If You Make a Mistake?
 
-### Unstage a file:
+#### Unstage a file:
 ```bash
 git restore --staged filename.html
+# if you git add a file you don't want to include
 ```
 
-### Discard changes
+#### Discard changes
 ```bash
 git restore filename.html
+# restore to the last commit
 ```
 
-### Amend last commit:
+#### Amend last commit:
 ```bash
 git commit --amend -m "New message"
 ```
-
-**We'll cover `git reset` later - it's more powerful!**
 
 ---
 
@@ -685,6 +668,8 @@ git commit --amend -m "New message"
 - Build outputs (`dist/`, `*.pyc`, `__pycache__/`)
 - Secrets (`.env`, `config.local.json`)
 - OS files (`.DS_Store`, `Thumbs.db`)
+
+---
 
 **Create a `.gitignore` file:**
 ```
@@ -732,7 +717,6 @@ git log           # View history
 git diff          # See changes
 ```
 
-**These 6 commands = 80% of your daily Git usage!**
 
 ---
 
@@ -763,7 +747,6 @@ Git Status shows you where you are! ←
 5. Commit it with a good message
 6. View your log
 
-**2 minutes - GO!**
 
 ---
 
@@ -808,7 +791,7 @@ HEAD~2   = Two commits ago
 
 ---
 
-## Git Reset: Time Travel ⏰
+## Git Reset: Time Travel 
 
 ```bash
 # Undo last commit, keep changes
@@ -821,7 +804,13 @@ git reset HEAD~1
 git reset --hard HEAD~1
 ```
 
-**⚠️ Use --hard with EXTREME caution!**
+---
+
+| Command                     | Commit Removed? | Changes in Staging Area? | Changes in Working Directory? | Use Case                        |
+|-----------------------------|-----------------|--------------------------|-------------------------------|---------------------------------|
+| `git reset --soft HEAD~1`   | Yes             | Kept (staged)            | Kept                          | Edit commit or message          |
+| `git reset HEAD~1` (--mixed) | Yes             | Removed (unstaged)       | Kept                          | Rework changes before committing |
+| `git reset --hard HEAD~1`   | Yes             | Removed                  | Discarded                     | Fully discard commit and changes |
 
 ---
 
