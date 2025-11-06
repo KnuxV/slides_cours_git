@@ -1,6 +1,6 @@
 ---
 title: Génie Logiciel
-theme: black
+theme: white
 highlightTheme: monokai
 separator: ^\n---\n$
 verticalSeparator: ^\n--\n$
