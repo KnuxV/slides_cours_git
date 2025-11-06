@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal-md</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
+# Part 2: Your First Git Repository
+
+## Hands-On: Local Git Workflow
+
+*Let's get our hands dirty with real Git commands*
+
+---
+
+## Plan 
+
+**We're going to build a simple website and track it with Git**
+
+By the end of this section, you'll:
+- Create your first Git repository
+- Make commits (save points)
+- View your history
+- Understand the Git workflow
+
+**No cloud yet - just you and Git on your computer**
+
+---
+
+<code>
+Working Directory  →  Staging Area  →  Repository  
+
+(Modified) ->  (Staged) ->(Committed)
+
+</code>
+
+
+ The Three States of Git: 
+- Working Directory = Your desk
+- Staging Area = Your to-do list  
+- Repository = Your filing cabinet
+
+---
+
+## Workflow Visualization
+
+```
+┌─────────────────┐
+│  Working Dir    │  ← You edit files here
+│  [file.html]    │
+└────────┬────────┘
+         │ git add
+         ↓
+┌─────────────────┐
+│  Staging Area   │  ← Select what to save
+│  [file.html]    │
+└────────┬────────┘
+         │ git commit
+         ↓
+┌─────────────────┐
+│  Repository     │  ← Permanent history
+│  [💾 Snapshot]  │
+└─────────────────┘
+```
+
+---
+
+## Let's Create a Project! 
+
+**Open your terminal and follow along:**
+
+```bash
+# Create a new folder for our project
+mkdir my-first-website
+cd my-first-website
+
+# Check where you are
+pwd
+# Should show: /path/to/my-first-website
+```
+
+
+**Windows users:** Use Git Bash or PowerShell
+
+---
+
+## Initialize Git Repository
+
+```bash
+git init
+```
+
+**What just happened?**
+- Git created a hidden `.git` folder
+- This folder contains ALL the Git magic
+- Your folder is now a Git repository!
+
+**Verify:**
+```bash
+ls -la    # Linux/macOS
+dir /a    # Windows
+# You should see: .git/
+```
+
+---
+
+## 🎨 Create Your First File
+
+**Create a file called `index.html`:**
+
+```bash
+# Option 1: Using terminal
+touch index.html
+
+# Option 2: Just create it in your text editor
+```
+
+**Then open it in your favorite editor and add:**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Git Project</title>
+</head>
+<body>
+    <h1>Hello, Git!</h1>
+</body>
+</html>
+```
+
+---
+
+## Git Status: Your Best Friend
+
+```bash
+git status
+```
+
+**Output:**
+```
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html
+
+nothing added to commit but untracked files present
+```
+
+---
+
+## Understanding Git Status
+
+```
+Untracked files:
+        index.html
+```
+
+**What does "untracked" mean?**
+- Git sees the file
+- But Git is NOT watching it for changes
+- We need to tell Git to track it!
+
+**Rule:** Always run `git status` when you're confused!
+
+---
+
+## Git Add: Stage Your Changes
+
+```bash
+git add index.html
+```
+
+**What happened?**
+- File moved to "Staging Area"
+- Git will include it in the next commit
+- File is now "tracked"
+
+**Check the result:**
+```bash
+git status
+```
+
+---
+
+## Git Status After Adding
+
+```
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   index.html
+```
+
+**Notice:**
+- "Changes to be committed" (green)
+- This is the staging area!
+
+---
+
+## Quick Tip: Add Multiple Files
+
+```bash
+# Add specific files
+git add file1.html file2.css
+
+# Add all files in current directory
+git add .
+
+# Add all HTML files
+git add *.html
+
+# Add everything (all changes)
+git add -A
+```
+
+**Today:** We'll be explicit with file names for clarity
+
+---
+
+## Git Commit: Save the Snapshot
+
+```bash
+git commit -m "Initial commit: Add index.html"
+```
+
+**Anatomy of the command:**
+- `git commit` = Save a snapshot
+- `-m` = Message flag
+- `"..."` = Your commit message
+
+**Output:**
+```
+[main (root-commit) a1b2c3d] Initial commit: Add index.html
+ 1 file changed, 9 insertions(+)
+ create mode 100644 index.html
+```
+
+---
+
+## What Just Happened?
+
+**You made your first commit**
+
+- Git took a snapshot of `index.html`
+- Assigned it a unique ID (hash): `a1b2c3d`
+- Attached your name, email, and timestamp
+- Stored it permanently in `.git/` folder
+
+**This is now part of your project's history forever!**
+
+---
+
+## Good Commit Messages
+
+### ✅ GOOD:
+```bash
+git commit -m "Add homepage with welcome message"
+git commit -m "Fix navigation bar alignment"
+git commit -m "Update contact form validation"
+```
+
+### ❌ BAD:
+```bash
+git commit -m "stuff"
+git commit -m "fixed it"
+git commit -m "asdfasdf"
+git commit -m "final version" (narrator: it wasn't)
+```
+
+---
+
+## Commit Message Best Practices
+
+**Rules of thumb:**
+1. **Start with a verb** (Add, Fix, Update, Remove)
+2. **Be specific** (what changed?)
+3. **Keep it under 50 characters** for the first line
+4. **Use present tense** ("Add feature" not "Added feature")
+
+**Think:** "If applied, this commit will ___"
+```
+✅ "Add contact form to homepage"
+✅ "Fix broken login button"
+✅ "Update pricing table with new plans"
+```
+
+---
+
+## Check Your Status Again
+
+```bash
+git status
+```
+
+**Output:**
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+**Translation:**
+- ✅ No unsaved changes
+- ✅ Everything is committed
+- ✅ Working directory is clean
+
+---
+
+## Let's Make Another Change! 
+
+**Add a paragraph to `index.html`:**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Git Project</title>
+</head>
+<body>
+    <h1>Hello, Git!</h1>
+    <p>This is my first website tracked with Git!</p>
+</body>
+</html>
+```
+
+**Save the file!**
+
+---
+
+## Status After Changes
+
+```bash
+git status
+```
+
+**Output:**
+```
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes)
+        modified:   index.html
+
+no changes added to commit
+```
+
+**Git detected the change!** 🎯
+
+---
+
+## See What Changed: Git Diff
+
+```bash
+git diff
+```
+
+**Output:**
+```diff
+diff --git a/index.html b/index.html
+index a1b2c3d..e4f5g6h 100644
+--- a/index.html
++++ b/index.html
+@@ -6,5 +6,6 @@
+ <body>
+     <h1>Hello, Git!</h1>
++    <p>This is my first website tracked with Git!</p>
+ </body>
+ </html>
+```
+
+**Green lines (+) = Added**  
+**Red lines (-) = Removed**
+
+---
+
+## Understanding Git Diff
+
+```diff
+--- a/index.html    ← Old version
++++ b/index.html    ← New version
+
+ <h1>Hello, Git!</h1>
++<p>This is my first website tracked with Git!</p>
+```
+
+**The + means this line was added!**
+
+**Pro tip:** `git diff` only shows UNSTAGED changes
+
+---
+
+## Stage and Commit Again
+
+```bash
+# Stage the change
+git add index.html
+
+# Commit the change
+git commit -m "Add introductory paragraph"
+```
+
+**Output:**
+```
+[main b2c3d4e] Add introductory paragraph
+ 1 file changed, 1 insertion(+)
+```
+
+**You now have TWO commits!** 🎉
+
+---
+
+## Practice Round: Your Turn! 💪
+
+**Make these changes:**
+
+1. Add a footer to `index.html`:
+   ```html
+   <footer>
+       <p>&copy; 2025 My First Git Project</p>
+   </footer>
+   ```
+
+2. Check status
+3. View the diff
+4. Add and commit with message: "Add footer"
+
+**Take 3 minutes **
+
+---
+
+## Git Log: View History
+
+```bash
+git log
+```
+
+**Output:**
+```
+commit b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1
+Author: Your Name <your.email@example.com>
+Date:   Thu Nov 6 10:30:00 2025 +0100
+
+    Add footer
+
+commit a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0
+Author: Your Name <your.email@example.com>
+Date:   Thu Nov 6 10:15:00 2025 +0100
+
+    Add introductory paragraph
+```
+
+---
+
+## Understanding Git Log
+
+Each commit shows:
+- **Commit hash** (unique ID)
+- **Author** (that's you)
+- **Date** (when you committed)
+- **Message** (what you wrote)
+
+**Navigate:** 
+- Press `Enter` to scroll
+- Press `q` to quit
+
+---
+
+## Git Log: Better Formats
+
+```bash
+# One line per commit
+git log --oneline
+
+# Output:
+# b2c3d4e Add footer
+# a1b2c3d Add introductory paragraph
+# 1234567 Initial commit: Add index.html
+```
+
+**Much easier to read!** 
+
+---
+
+## More Git Log Options
+
+```bash
+# Show last 3 commits
+git log -n 3
+
+# Show with graph (useful later with branches)
+git log --oneline --graph
+
+# Show with files changed
+git log --stat
+
+# Show with actual changes
+git log -p
+```
+
+**Try them out!**
+
+---
+
+## Workflow: The Complete Cycle
+
+```bash
+# 1. Check current status
+git status
+
+# 2. Make changes to files
+# ... edit files ...
+
+# 3. See what changed
+git diff
+
+# 4. Stage changes
+git add filename.html
+
+# 5. Commit with message
+git commit -m "Description of changes"
+
+# 6. View history
+git log --oneline
+```
+
+**This is the loop you'll repeat constantly!**
+
+---
+
+## Common Workflow Shortcuts
+
+```bash
+# Stage ALL modified files and commit
+git commit -am "Your message"
+
+# Equivalent to:
+git add .
+git commit -m "Your message"
+```
+
+**⚠️ Warning:** `-am` only works for **modified** files, not new files!
+
+**For new files, you must `git add` them first!**
+
+---
+
+## Let's Practice: Build a Real Page
+
+**Create a proper website structure:**
+
+```
+my-first-website/
+├── index.html
+├── style.css      ← NEW
+└── about.html     ← NEW
+```
+
+**I'll give you 5 minutes:**
+1. Create `style.css` with basic styling
+2. Create `about.html` with an about page
+3. Make separate commits for each file
+
+---
+
+## Example: style.css
+
+```css
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: #333;
+}
+```
+
+**Create this file, then:**
+```bash
+git add style.css
+git commit -m "Add basic CSS styling"
+```
+
+---
+
+## Example: about.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - My First Git Project</title>
+</head>
+<body>
+    <h1>About This Project</h1>
+    <p>This is a project to learn Git!</p>
+</body>
+</html>
+```
+
+**Then:**
+```bash
+git add about.html
+git commit -m "Add about page"
+```
+
+---
+
+## Check Your Progress
+
+```bash
+git log --oneline
+```
+
+**You should see something like:**
+```
+e7f8g9h Add about page
+d6e7f8g Add basic CSS styling  
+c5d6e7f Add footer
+b4c5d6e Add introductory paragraph
+a3b4c5d Initial commit: Add index.html
+```
+
+**5+ commits! You're a Git user now!** 🎉
+
+---
+
+## Git Status: Different States
+
+```bash
+git status
+```
+
+**You might see:**
+
+```
+Untracked files:     ← New file, Git doesn't know about it
+Changes not staged:  ← Modified file, not added yet
+Changes to be committed: ← Staged, ready to commit
+```
+
+**Each state requires different actions!**
+
+---
+
+## State Transitions
+
+```
+[Untracked] 
+    ↓ git add
+[Staged]
+    ↓ git commit
+[Committed]
+    ↓ edit file
+[Modified]
+    ↓ git add
+[Staged]
+    ↓ git commit
+[Committed]
+```
+
+**The cycle continues!**
+
+---
+
+## What If You Make a Mistake?
+
+### Unstage a file:
+```bash
+git restore --staged filename.html
+```
+
+### Discard changes
+```bash
+git restore filename.html
+```
+
+### Amend last commit:
+```bash
+git commit --amend -m "New message"
+```
+
+**We'll cover `git reset` later - it's more powerful!**
+
+---
+
+## Ignoring Files: .gitignore
+
+**Some files shouldn't be tracked:**
+- Dependencies (`node_modules/`, `venv/`)
+- Build outputs (`dist/`, `*.pyc`, `__pycache__/`)
+- Secrets (`.env`, `config.local.json`)
+- OS files (`.DS_Store`, `Thumbs.db`)
+
+**Create a `.gitignore` file:**
+```
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+```
+
+---
+
+## Practice: Add .gitignore
+
+```bash
+# Create the file
+touch .gitignore
+
+# Add content (use your editor):
+# *.log
+# .DS_Store
+# __pycache__/
+
+# Commit it!
+git add .gitignore
+git commit -m "Add gitignore file"
+```
+
+**Files matching these patterns will be ignored!**
+
+---
+
+## Checking What's Ignored
+
+```bash
+# See all ignored files
+git status --ignored
+
+# Check if a file would be ignored
+git check-ignore filename.log
+```
+
+**Pro tip:** GitHub has templates for different languages at [gitignore.io](https://gitignore.io)
+
+---
+
+## Let's Review: Key Commands
+
+```bash
+git init          # Create new repository
+git status        # Check current state
+git add <file>    # Stage changes
+git commit -m ""  # Save snapshot
+git log           # View history
+git diff          # See changes
+```
+
+**These 6 commands = 80% of your daily Git usage!**
+
+---
+
+## Visual: Complete Workflow
+
+```
+[Working Directory]
+  ↓ (make changes)
+[Modified Files]
+  ↓ git add
+[Staging Area]
+  ↓ git commit
+[Local Repository]
+  
+Git Status shows you where you are! ←
+```
+
+---
+
+## Quick Challenge 
+
+**Without looking at notes:**
+
+1. Create a new file `contact.html`
+2. Check status - what does it say?
+3. Stage it
+4. Check status again - what changed?
+5. Commit it with a good message
+6. View your log
+
+**2 minutes - GO!**
+
+---
+
+## Common Mistakes & Fixes
+
+### Forgot to add before commit:
+```bash
+# Just add and commit again
+git add forgotten-file.html
+git commit -m "Add forgotten file"
+```
+
+### Typo in commit message:
+```bash
+git commit --amend -m "Corrected message"
+```
+
+### Want to undo last commit (keep changes):
+```bash
+git reset --soft HEAD~1
+```
+
+---
+
+## Understanding HEAD
+
+**HEAD = Where you are right now**
+
+```
+[Commit 1] → [Commit 2] → [Commit 3] ← HEAD
+```
+
+**HEAD always points to your current commit**
+
+```bash
+HEAD     = Current commit
+HEAD~1   = One commit ago
+HEAD~2   = Two commits ago
+```
+
+**Useful for reset, revert, and other operations!**
+
+---
+
+## Git Reset: Time Travel ⏰
+
+```bash
+# Undo last commit, keep changes
+git reset --soft HEAD~1
+
+# Undo last commit, unstage changes
+git reset HEAD~1
+
+# Undo last commit, discard changes (⚠️ DANGEROUS!)
+git reset --hard HEAD~1
+```
+
+**⚠️ Use --hard with EXTREME caution!**
+
+---
+
+## When to Use Reset
+
+**Soft reset:** "I want to recommit with better message/changes"
+```bash
+git reset --soft HEAD~1
+# Make changes
+git commit -m "Better message"
+```
+
+**Hard reset:** "I want to completely undo this commit"
+```bash
+git reset --hard HEAD~1
+# ⚠️ Changes are GONE forever!
+```
+
+---
+
+## Practice: Oops, Wrong Commit!
+
+```bash
+# Make a commit with bad message
+echo "test" > test.txt
+git add test.txt
+git commit -m "asdf"
+
+# Oh no! Let's fix it:
+git reset --soft HEAD~1
+
+# Now recommit properly:
+git commit -m "Add test file for demonstration"
+
+# Check your log:
+git log --oneline
+```
+
+---
+
+## Viewing Old Commits
+
+```bash
+# See what changed in a specific commit
+git show a1b2c3d
+
+# See files in a specific commit
+git ls-tree --name-only a1b2c3d
+
+# Compare two commits
+git diff a1b2c3d..b2c3d4e
+```
+
+**The hash is the commit ID from `git log`**
+
+---
+## Why Multiple Small Commits?
+
+### ✅ GOOD: Small, focused commits
+```
+"Add contact form HTML"
+"Add contact form CSS"
+"Add contact form validation"
+```
+
+### ❌ BAD: One giant commit
+```
+"Add entire contact feature with styling and validation"
+```
+
+**Why?** Easy to find bugs, easy to revert specific changes
+
+---
+
+## Git Best Practices
+
+1. **Commit often** (hourly/daily, not monthly)
+2. **Commit working code** (don't commit broken code)
+3. **Write clear messages** (future you will thank you)
+4. **Use .gitignore** (don't track junk)
+5. **Review before committing** (`git diff`)
+
+---
+
+## Your Local Git Workflow 🎯
+
+```bash
+# The loop you'll repeat:
+git status           # Where am I?
+# ... make changes ...
+git diff             # What changed?
+git add .            # Stage it
+git commit -m "..."  # Save it
+git log --oneline    # Check history
+```
+
+**Master this loop = Master 80% of Git!**
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"_":["Part 2 - Basic Commands & First Repository.md"],"static":"public/part2"}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+    </script>
+  </body>
+</html>
