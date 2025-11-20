@@ -30,9 +30,9 @@ words:
 
 ### Python Development
 
-- [Part 5 Virtual Environments](part6/index.html)
-- [Part 6 - Docstrings](part7/index.html)
-- [Part 7 - Type hints](part8/index.html)
+- [Part 5 - Virtual Environments](part5/index.html)
+- [Part 6 - Docstrings](part6/index.html)
+- [Part 7 - Type Hints](part7/index.html)
 
 ---
 

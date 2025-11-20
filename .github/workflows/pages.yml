@@ -26,6 +26,9 @@ jobs:
           reveal-md "Part 2 - Basic Commands & First Repository.md" --static public/part2
           reveal-md "Part 3 - Remote Repositories & Collaboration.md" --static public/part3 --slide-number
           reveal-md "Part 4 - Branches.md" --static public/part4 --slide-number
+          reveal-md "Part 5 - Virtual Environments.md" --static public/part5 --slide-number
+          reveal-md "Part 6 - Docstrings.md" --static public/part6 --slide-number
+          reveal-md "Part 7 - Type Hints.md" --static public/part7 --slide-number
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
