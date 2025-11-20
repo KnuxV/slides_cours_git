@@ -23,6 +23,7 @@ words:
 - [Part 1 - Introduction & Setup](part1/index.html)
 - [Part 2 - Basic Commands & First Repository](part2/index.html)
 - [Part 3 - Remote Repositories & Collaboration](part3/index.html)
+- [Part 4 - Branches](part4/index.html)
 - [Exercises ](https://gitlab.unistra.fr/cours_git)
 
 ---

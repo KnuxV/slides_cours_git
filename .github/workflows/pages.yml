@@ -24,7 +24,8 @@ jobs:
           reveal-md index.md --static public
           reveal-md "Part 1 - Introduction & Setup.md" --static public/part1
           reveal-md "Part 2 - Basic Commands & First Repository.md" --static public/part2
-          reveal-md "Part 3 - Remote Repositories & Collaboration.md" --static public/part3
+          reveal-md "Part 3 - Remote Repositories & Collaboration.md" --static public/part3 --slide-number
+          reveal-md "Part 4 - Branches.md" --static public/part4 --slide-number
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public

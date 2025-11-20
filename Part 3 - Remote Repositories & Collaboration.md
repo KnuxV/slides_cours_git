@@ -673,12 +673,12 @@ Their GitLab Account        Your GitLab Account
 ### When to Fork?
 
 **Use forking when:**
-- 🐛 You want to fix a bug in someone's project
-- ✨ You want to add a feature
-- 🎓 You want to customize for your use
-- 🤝 You want to contribute back
+- You want to fix a bug in someone's project
+- You want to add a feature
+- You want to customize for your use
+- You want to contribute back
 
-**Forking enables collaboration!**
+**Forking enables collaboration**
 
 ---
 
@@ -768,7 +768,7 @@ git push
 4. Original owner reviews
 5. They merge (or request changes)
 
-**This is how open source works** 🌟
+**This is how open source works** 
 
 ---
 
@@ -784,18 +784,6 @@ git push
 6. Click **Create merge request**
 
 **Now you wait for review**
-
----
-
-### Practice: Fork & Contribute (8 min)
-
-**Your turn:**
-
-1. Add a new file locally
-2. Commit and push to your fork
-3. Merge request
-
-**we'll review and merge them all** 
 
 ---
 
@@ -830,7 +818,7 @@ Person A:                  Person B:
 <h1>Hello World</h1>      <h1>Hi There</h1>
       ↓ push                    ↓ push
       
-Git: "Wait, which one?!" 
+Git: "Wait, which one version should I keep ?" 
 ```
 
 **Conflict = Git can't auto-merge**
@@ -842,40 +830,42 @@ Git: "Wait, which one?!"
 **Let's create a conflict intentionally:**
 
 **Everyone:**
-1. Open your `index.html` on collaboration-fork, locally
-2. Change the `<p>` text to something unique
-3. Commit it
+1. Open a repo locally and on the cloud
+2. Add a new file with some contents or change a section in an existing file
+3. Commit it `git commit -am "making a conflict"`
 4. **DON'T PUSH YET!**
 
 ---
 
 ### Simulate Conflict
 
-**Now I'll push a change to the collaboration-fork:**
+1. Go to the online repo (GitHub/GitLab web page)
+2. Edit the exact same line/file but write something different
+3. Commit directly on the website
 
-(Instructor pushes conflicting change to demo repo)
+Now, you have two new, different commits from the same ancestor.
 
-**Now when you try to pull:**
+---
 
+### Git Pull
+
+Now, if you type locally
 ```bash
 git pull
 ```
-
-**CONFLICT**
+You will see something like that:
+```bash
+You will see something like:
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.
+```
 
 ---
 
 ### Anatomy of a Conflict
 
-**Git adds markers to your file:**
-
-```html
-<<<<<<< HEAD
-<h1>My Version</h1>
-=======
-<h1>Their Version</h1>
->>>>>>> a1b2c3d
-```
+Open locally the file with the conflict
 
 **Understanding the markers:**
 - `<<<<<<< HEAD` → Your changes
@@ -904,9 +894,9 @@ git pull
 
 ### Resolving a Conflict
 
-**Step 1: Open the conflicted file**
-
-**Step 2: Remove the markers and decide:**
+1. Open the conflicted file
+2. Remove the markers
+3. Edit the file to keep the changes you want/need 
 
 ```html
 <!-- Before (conflict) -->
