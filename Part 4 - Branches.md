@@ -85,7 +85,7 @@ Two possible outcomes:
 
 ## Fast-forward merge (most of the time)
 
-![branch1](img/branch1.png)
+![branch1](img/ffbranch.png)
 
 
 ---
@@ -102,7 +102,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 ---
 
-## How to fix a conflict
+### How to fix a conflict
 
 1. Open the file → you see this:
 ```python
@@ -121,6 +121,9 @@ Automatic merge failed; fix conflicts and then commit the result.
 git add scrabble_score.py
 git commit -m "Merged feature with small fix"
 ```
+---
+
+![branch](img/branch1.png)
 
 ---
 

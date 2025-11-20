@@ -16,9 +16,9 @@ words:
 
 ---
 
-## Cours: Version Control with Git
+## Génie Logiciel
 
-### Navigation
+### Version Control with Git
 
 - [Part 1 - Introduction & Setup](part1/index.html)
 - [Part 2 - Basic Commands & First Repository](part2/index.html)
@@ -27,6 +27,15 @@ words:
 - [Exercises ](https://gitlab.unistra.fr/cours_git)
 
 ---
+
+### Python Development
+
+- [Part 5 Virtual Environments](part6/index.html)
+- [Part 6 - Docstrings](part7/index.html)
+- [Part 7 - Type hints](part8/index.html)
+
+---
+
 
 ## Table des matières
 
