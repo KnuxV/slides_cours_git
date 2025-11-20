@@ -371,8 +371,8 @@ def count_young_user(lst_user: list[User]) -> int:
     return len([user for user in lst_user if user.age < 20])
 
 
-# Create an instance
-alice = User("Alice", 25)
+# Create instances
+alice:User = User("Alice", 25) #useless here
 bob = User("Bob", 36)
 tot_younsters = count_young_user([alice, bob])  
 ```
