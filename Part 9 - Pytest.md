@@ -11,28 +11,29 @@ revealOptions:
 
 <style>
 .reveal {
-  font-size: 32px;
+  font-size: 28px;  /* Was 32px - smaller base font */
 }
 .reveal h1 {
-  font-size: 2.2em;
-  margin-bottom: 0.5em;
+  font-size: 2em;  /* Was 2.2em */
+  margin-bottom: 0.3em;  /* Was 0.5em */
 }
 .reveal h2 {
-  font-size: 1.6em;
-  margin-bottom: 0.8em;
+  font-size: 1.4em;  /* Was 1.6em */
+  margin-bottom: 0.5em;  /* Was 0.8em */
 }
 .reveal p {
-  margin: 0.4em 0;
+  margin: 0.3em 0;  /* Was 0.4em */
 }
 .reveal ul {
-  margin: 0.5em 0;
+  margin: 0.3em 0;  /* Was 0.5em */
 }
 .reveal li {
-  margin: 0.3em 0;
+  margin: 0.2em 0;  /* Was 0.3em */
+  line-height: 1.3;  /* Added - tighter line spacing */
 }
 .reveal pre {
-  font-size: 0.75em;
-  margin: 0.8em 0;
+  font-size: 0.7em;  /* Was 0.75em */
+  margin: 0.5em 0;  /* Was 0.8em */
   box-shadow: none;
 }
 .reveal code {
