@@ -83,6 +83,8 @@ revealOptions:
 - Live documentation that never gets outdated
 - New team members learn from tests
 
+---
+
 **6. Essential for Automation and CI/CD**
 - Foundation of continuous integration pipelines
 - Automated quality gates prevent broken code from shipping
@@ -112,8 +114,8 @@ pip install pytest
 
 **Basic usage:**
 ```bash
-pytest                    # Run all tests
-pytest -v                 # Verbose output
+pytest # Run all tests
+pytest -v # Verbose output
 pytest test_file.py       # Run specific file
 ```
 
@@ -127,6 +129,8 @@ pytest test_file.py       # Run specific file
 - Test files: `test_*.py` or `*_test.py`
 - Test functions: `def test_*()`
 - Test classes: `class Test*`
+
+---
 
 **Directory structure:**
 ```
@@ -666,6 +670,8 @@ https://github.com/KnuxV/nlp-steamlit-app
 - Work together
 - One can do the function
 - One can do the test
+
+---
 
 **Resources:**
 - pytest documentation: https://docs.pytest.org/
