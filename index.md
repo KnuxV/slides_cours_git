@@ -41,6 +41,8 @@ words:
 - [Part 8  Unit testing](part8/index.html)
 - [Part 9 Pytest](part9/index.html)
 
+---
+
 ## Table des matières
 
 1. Introduction & Setup
