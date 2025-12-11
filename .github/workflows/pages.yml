@@ -29,6 +29,9 @@ jobs:
           reveal-md "Part 5 - Virtual Environments.md" --static public/part5 --slide-number
           reveal-md "Part 6 - Docstrings.md" --static public/part6 --slide-number
           reveal-md "Part 7 - Type Hints.md" --static public/part7 --slide-number
+          reveal-md "Part 8 - Unit_testing.md" --static public/part7 --slide-number
+          reveal-md "Part 9 - Pytest.md" --static public/part7 --slide-number
+          
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
