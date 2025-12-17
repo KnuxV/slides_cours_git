@@ -31,6 +31,11 @@ jobs:
           reveal-md "Part 7 - Type Hints.md" --static public/part7 --slide-number
           reveal-md "Part 8 - Unit_testing.md" --static public/part8 --slide-number
           reveal-md "Part 9 - Pytest.md" --static public/part9 --slide-number
+          reveal-md "Part 10 - __main__.md" --static public/part9 --slide-number
+          reveal-md "Part 11 - arguments.md" --static public/part9 --slide-number
+          reveal-md "Part 12 - pdoc.md" --static public/part9 --slide-number
+          reveal-md "Part 13 - github_actions.md" --static public/part9 --slide-number
+          reveal-md "Part 14 - licencing.md" --static public/part9 --slide-number
           
       - uses: actions/upload-pages-artifact@v3
         with:

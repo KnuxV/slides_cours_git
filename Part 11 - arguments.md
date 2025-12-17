@@ -275,18 +275,13 @@ if __name__ == "__main__":
 
 ## Common Patterns
 
-**Verbose levels (count):**
-```python
-parser.add_argument('-v', '--verbose', 
-                    action='count', default=0)
-# -v → args.verbose = 1
-# -vv → args.verbose = 2
-# -vvv → args.verbose = 3
-```
 
 **Short + long options:**
 ```python
 parser.add_argument('-o', '--output')  # Both work
+args = parser.parse_args()
+# args.output
+
 ```
 
 **Default values:**
@@ -318,14 +313,15 @@ parser.add_argument('--port', type=int, default=8080,
 **Create `counter.py`:**
 - Takes a filename as required argument
 - Has `--word` flag to count words (default: count lines)
-- Has `--verbose` flag for extra output
+- OR '--method' with a choices=['words', 'lines']
 ```bash
 $ python counter.py data.txt
 100 lines
 
-$ python counter.py data.txt --word --verbose
+$ python counter.py data.txt --word 
 Counting words in data.txt
 Total: 1523 words
-```
 
-Try it yourself!
+$ python counter.py myfile.txt --method words
+Total: 100 words
+```
