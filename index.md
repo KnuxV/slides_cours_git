@@ -57,8 +57,3 @@ words:
 [Exam](part15/index.html)
 [📥 Download PDF](exam_génie_logiciel_2026.pdf)
 
-## Table des matières
-
-1. Introduction & Setup
-2. Basic Commands & First Repository
-3. Remote Repositories & Collaboration
