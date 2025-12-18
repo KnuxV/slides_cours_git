@@ -42,6 +42,18 @@ words:
 - [Part 9 Pytest](part9/index.html)
 
 ---
+### Arguments / Documentation / License
+- [Part 10 main](part10/index.html) 
+- [Part 11 arguments](part11/index.html) 
+- [Part 12 pdoc](part12/index.html) 
+- [Part 13 github actions](part13/index.html) 
+- [Part 14 licensing](part14/index.html)
+
+---
+### Exam
+
+[Exam](part15/index.html)
+
 
 ## Table des matières
 

@@ -1,14 +1,11 @@
 name: Deploy slides
-
 on:
   push:
     branches: [main]
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,10 +14,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g reveal-md
-      - run: |
+      
+      - name: Install Pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+      
+      - name: Install reveal-md
+        run: npm install -g reveal-md
+      
+      - name: Build slides and exam
+        run: |
           mkdir -p public
           cp obsidian-theme.css public/
+          
+          # Build all reveal-md slides
           reveal-md index.md --static public
           reveal-md "Part 1 - Introduction & Setup.md" --static public/part1
           reveal-md "Part 2 - Basic Commands & First Repository.md" --static public/part2
@@ -31,11 +37,19 @@ jobs:
           reveal-md "Part 7 - Type Hints.md" --static public/part7 --slide-number
           reveal-md "Part 8 - Unit_testing.md" --static public/part8 --slide-number
           reveal-md "Part 9 - Pytest.md" --static public/part9 --slide-number
-          reveal-md "Part 10 - __main__.md" --static public/part9 --slide-number
-          reveal-md "Part 11 - arguments.md" --static public/part9 --slide-number
-          reveal-md "Part 12 - pdoc.md" --static public/part9 --slide-number
-          reveal-md "Part 13 - github_actions.md" --static public/part9 --slide-number
-          reveal-md "Part 14 - licencing.md" --static public/part9 --slide-number
+          reveal-md "Part 10 - __main__.md" --static public/part10 --slide-number
+          reveal-md "Part 11 - arguments.md" --static public/part11 --slide-number
+          reveal-md "Part 12 - pdoc.md" --static public/part12 --slide-number
+          reveal-md "Part 13 - github_actions.md" --static public/part13 --slide-number
+          reveal-md "Part 14 - licensing.md" --static public/part14 --slide-number
+          
+          # Build exam page with Pandoc
+          mkdir -p public/part15
+          pandoc "Part 15 - exam.md" \
+            -o public/part15/index.html \
+            -s \
+            --css=../obsidian-theme.css \
+            --metadata title="Exam"
           
       - uses: actions/upload-pages-artifact@v3
         with:
