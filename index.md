@@ -50,10 +50,11 @@ words:
 - [Part 14 licensing](part14/index.html)
 
 ---
+
 ### Exam
 
 [Exam](part15/index.html)
-
+[📥 Download PDF](exam_génie_logiciel_2026.pdf)
 
 ## Table des matières
 

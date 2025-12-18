@@ -25,7 +25,8 @@ jobs:
         run: |
           mkdir -p public
           cp obsidian-theme.css public/
-          
+          cp exam_génie_logiciel_2026.pdf public/ 
+
           # Build all reveal-md slides
           reveal-md index.md --static public
           reveal-md "Part 1 - Introduction & Setup.md" --static public/part1
